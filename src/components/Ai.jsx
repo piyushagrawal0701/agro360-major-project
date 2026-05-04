@@ -123,7 +123,7 @@ const Ai = () => {
   // 🌱 COMMAND HANDLER
   const handleCommand = (cmd) => {
     if (!cmd) {
-      speak("Haan bolo, kaise madad karoon");
+      speak("Haan bolo");
       return;
     }
 
@@ -145,7 +145,7 @@ const Ai = () => {
       cmd.includes("fertiliser") ||
       cmd.includes("khad")
     ) {
-      speak("Fertilizer information khol raha hoon");
+      speak("Fertilizer information");
       navigate("/fertilizers");
     }
 
@@ -156,7 +156,7 @@ const Ai = () => {
       cmd.includes("disease") ||
       cmd.includes("plant problem")
     ) {
-      speak("Crop doctor open kar raha hoon");
+      speak("Crop doctor");
       navigate("/crop-doctor");
     }
 
@@ -166,7 +166,7 @@ const Ai = () => {
       cmd.includes("scheduler") ||
       cmd.includes("planning")
     ) {
-      speak("Crop scheduler open kar raha hoon");
+      speak("Crop scheduler");
       navigate("/crop-scheduler");
     }
 
@@ -177,22 +177,23 @@ const Ai = () => {
       cmd.includes("buy") ||
       cmd.includes("sell")
     ) {
-      speak("Agri bazaar open kar raha hoon");
+      speak("Agri bazaar");
       navigate("/agri-bazaar");
     }
 
     // SCHEMES
     else if (
       cmd.includes("scheme") ||
+      cmd.includes("schemes") ||
       cmd.includes("yojana") ||
       cmd.includes("government")
     ) {
-      speak("Government schemes dikha raha hoon");
+      speak("Government schemes");
       navigate("/schemes");
     }
 
     else {
-      speak("Samajh nahi aaya, dobara boliye");
+      speak("Samajh nahi aaya, Please repeat");
     }
   };
 
