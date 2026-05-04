@@ -226,9 +226,9 @@ export default function Home() {
                 whileHover={{ scale: 1.05 }}
                 key={index}
                 ref={(el) => (featureRef.current[index] = el)}
-                className="bg-white hover:bg-green-50 border border-transparent hover:border-green-500 transition-all rounded-2xl p-6 shadow-md hover:shadow-xl cursor-pointer transform hover:-translate-y-1"
+                className="bg-white hover:bg-green-50 border border-transparent hover:border-green-500 transition-all rounded-2xl p-6 shadow-md hover:shadow-xl cursor-pointer transform hover:-translate-y-1 justify-center text-center mx-auto flex-col items-center"
               >
-                <div className="mb-4 text-green-600 text-4xl">{feature.icon}</div>
+                <div className="mb-4 text-green-600 text-4xl w-full mx-auto flex justify-center items-center">{feature.icon}</div>
                 <h3 className="text-xl font-bold text-gray-800 mb-2">
                   {feature.title}
                 </h3>

@@ -2,16 +2,17 @@ import React, { useRef } from "react";
 import { Routes, Route } from "react-router-dom";
 
 import Navbar from "./components/Navbar";
-import Home from "./components/Home";
+import Home from "./Pages/Home";
 import WhyAgro360 from "./components/WhyAgro360";
-import FertilizersInfo from "./components/FertilizerInfo";
-import CropScheduler from "./components/CropScheduler";
-import GovernmentSchemes from "./components/GovernmentSchemes";
-import AgriBazaar from "./components/AgriBazaar";
-import CropDoctor from "./components/CropDoctor";
-import Register from "./components/Register";
-import Login from "./components/Login";
-import Footer from "./components/Footer"; // ✅ Import Footer
+import FertilizersInfo from "./Pages/FertilizerInfo";
+import CropScheduler from "./Pages/CropScheduler";
+import GovernmentSchemes from "./Pages/GovernmentSchemes";
+import AgriBazaar from "./Pages/AgriBazaar";
+import CropDoctor from "./Pages/CropDoctor";
+import Footer from "./components/Footer"; 
+import ScrollToTop from "./components/ScrollToTop";
+import Ai from "./components/Ai";
+import { Toaster } from "react-hot-toast";
 
 export default function App() {
   const fertilizerRef = useRef();
@@ -22,6 +23,9 @@ export default function App() {
 
   return (
     <div className="bg-white text-gray-800 flex flex-col min-h-screen">
+      <ScrollToTop/>
+      <Ai/>
+      <Toaster/>
       <Navbar
         scrollTo={{
           fertilizerRef,
@@ -47,8 +51,6 @@ export default function App() {
               </>
             }
           />
-          <Route path="/register" element={<Register />} />
-          <Route path="/login" element={<Login />} />
           <Route path="/fertilizers" element={<FertilizersInfo />} />
           <Route path="/crop-scheduler" element={<CropScheduler />} />
           
@@ -58,7 +60,7 @@ export default function App() {
         </Routes>
       </div>
 
-      <Footer /> {/* ✅ Add Footer here */}
+      <Footer />
     </div>
   );
 }

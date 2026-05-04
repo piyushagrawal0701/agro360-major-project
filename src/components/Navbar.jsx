@@ -2,14 +2,11 @@ import { FaLeaf, FaBars, FaTimes } from "react-icons/fa";
 import { motion, AnimatePresence } from "framer-motion";
 import gsap from "gsap";
 import React, { useState, useRef, useEffect } from "react";
-import { useUser } from "../context/UserContext";
 import { useNavigate, Link } from "react-router-dom";
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [language, setLanguage] = useState("English");
   const letterRefs = useRef([]);
-  const { user, logout } = useUser();
   const navigate = useNavigate();
 
   const toggleMenu = () => setMenuOpen(!menuOpen);
@@ -52,7 +49,7 @@ export default function Navbar() {
           delay: i * 0.05,
           duration: 0.4,
           ease: "back.out(1.7)",
-        }
+        },
       );
     });
   }, []);
@@ -70,9 +67,9 @@ export default function Navbar() {
       initial={{ y: -60, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.6, ease: "easeOut" }}
-className="fixed top-0 left-0 w-full z-50 px-2"
+      className="fixed top-0 left-0 w-full z-50 px-2"
     >
-<div className="max-w-9xl mx-auto px-4 py-3 flex items-center justify-between bg-white/30 backdrop-blur-md border-b border-white/20 shadow-lg rounded-b-2xl">
+      <div className="max-w-9xl mx-auto px-4 py-3 flex items-center justify-between bg-white/30 backdrop-blur-md border-b border-white/20 shadow-lg rounded-b-2xl">
         {/* Logo */}
         <motion.div
           className="flex items-center gap-2 cursor-pointer"
@@ -112,52 +109,6 @@ className="fixed top-0 left-0 w-full z-50 px-2"
           ))}
         </div>
 
-        {/* Language + Auth */}
-        <div className="hidden md:flex items-center gap-4">
-          <select
-            value={language}
-            onChange={handleLanguageChange}
-            className="text-sm rounded-full px-3 py-1 bg-white/60 text-green-700 border border-green-300 hover:bg-green-100 transition"
-          >
-            <option value="English">English</option>
-            <option value="Hindi">हिंदी</option>
-          </select>
-
-          {user ? (
-            <>
-              <div className="px-4 py-2 text-sm bg-white/50 text-green-800 border border-green-400 rounded-full font-semibold shadow-sm">
-                {user.name?.split(" ").slice(0, 2).join(" ")}
-              </div>
-              <motion.button
-                onClick={logout}
-                whileHover={{ scale: 1.05 }}
-                className="px-4 py-2 text-sm bg-red-500 text-white rounded-full hover:bg-red-600 transition font-semibold shadow"
-              >
-                Logout
-              </motion.button>
-            </>
-          ) : (
-            <>
-              <Link to="/login">
-                <motion.button
-                  whileHover={{ scale: 1.05 }}
-                  className="px-4 py-2 text-sm text-green-800 border border-green-500 rounded-full hover:bg-green-100 transition font-medium shadow-sm"
-                >
-                  Login
-                </motion.button>
-              </Link>
-              <Link to="/register">
-                <motion.button
-                  whileHover={{ scale: 1.05 }}
-                  className="px-4 py-2 text-sm bg-gradient-to-r from-green-600 to-green-500 text-white rounded-full hover:brightness-110 transition font-semibold shadow"
-                >
-                  Register
-                </motion.button>
-              </Link>
-            </>
-          )}
-        </div>
-
         {/* Mobile Toggle */}
         <button
           onClick={toggleMenu}
@@ -166,55 +117,6 @@ className="fixed top-0 left-0 w-full z-50 px-2"
           {menuOpen ? <FaTimes /> : <FaBars />}
         </button>
       </div>
-
-      {/* Mobile Dropdown */}
-      <AnimatePresence>
-        {menuOpen && (
-          <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -10 }}
-            transition={{ duration: 0.3 }}
-            className="md:hidden bg-white/80 backdrop-blur-lg px-4 pb-4 shadow-lg rounded-b-2xl"
-          >
-            <div className="flex flex-col gap-4 pt-4">
-              {navLinks.map(({ label, path }) => (
-                <button
-                  key={label}
-                  onClick={() => {
-                    navigate(path);
-                    setMenuOpen(false);
-                  }}
-                  className="text-green-800 text-sm font-semibold rounded-md py-2 hover:bg-green-100 transition"
-                >
-                  {label}
-                </button>
-              ))}
-              {user ? (
-                <button
-                  onClick={logout}
-                  className="text-red-600 text-sm font-semibold rounded-md py-2 hover:bg-red-100 transition"
-                >
-                  Logout
-                </button>
-              ) : (
-                <>
-                  <Link to="/login" onClick={() => setMenuOpen(false)}>
-                    <div className="text-sm text-green-700 hover:underline py-1">
-                      Login
-                    </div>
-                  </Link>
-                  <Link to="/register" onClick={() => setMenuOpen(false)}>
-                    <div className="text-sm text-green-700 hover:underline py-1">
-                      Register
-                    </div>
-                  </Link>
-                </>
-              )}
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
     </motion.nav>
   );
 }

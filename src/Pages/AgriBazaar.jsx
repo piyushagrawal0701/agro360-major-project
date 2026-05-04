@@ -15,7 +15,7 @@ const products = [
     name: "DAP Fertilizer",
     category: "Fertilizers",
     price: 800,
-    image: "https://th.bing.com/th/id/OIP.bfrtqsLKip-3eBb7r37WEgHaH6?w=165&h=180&c=7&r=0&o=7&dpr=1.3&pid=1.7&rm=3",
+    image: "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcTdB5nflZNe2UmRg3iyV_boA9hJCFMfTwR5bSB2bPpwEu0XauoS",
   },
   {
     name: "Compost Organic Fertilizer",
@@ -35,7 +35,7 @@ const products = [
     name: "Rice Paddy Seeds",
     category: "Crop Seeds",
     price: 280,
-    image: "https://th.bing.com/th/id/OIP.7MyLF7Q8oSJrYc4q6EBIxwHaFZ?w=264&h=191&c=7&r=0&o=7&dpr=1.3&pid=1.7&rm=3",
+    image: "https://m.media-amazon.com/images/I/71vv8NWBaiL.jpg",
   },
   {
     name: "Maize Hybrid Seeds",
@@ -55,7 +55,7 @@ const products = [
     name: "Bio Insecticide",
     category: "Pesticides",
     price: 180,
-    image: "https://th.bing.com/th/id/OIP.Dhd5AK8OvJ4ScuDUGIHmggHaHa?w=170&h=180&c=7&r=0&o=7&dpr=1.3&pid=1.7&rm=3",
+    image: "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcRge8-UXqse0wwQ0ULhfHxxtUD_rrji-mVy00sRTbAY7UsYfl6t",
   },
   {
     name: "Fungal Spray",
@@ -197,7 +197,7 @@ const handlePlaceOrder = () => {
                   "https://via.placeholder.com/150x100?text=No+Image"
                 }
                 alt={product.name}
-                className="w-full h-40 object-cover mb-4 rounded"
+                className="w-full h-40 object-contain mb-4 rounded"
               />
               <h2 className="text-lg font-bold mb-2">{product.name}</h2>
               <p className="text-green-700 font-semibold mb-2">
